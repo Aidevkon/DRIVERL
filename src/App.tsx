@@ -1,39 +1,39 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { LessonScreen } from './components/LessonScreen'
 import { LessonPath } from './components/LessonPath'
+import { MainLayout } from './components/layout/MainLayout'
 import { initialLessons } from './data/lessons'
-import type { UserProgress } from './types'
+import signsMap from './data/signsMap.json';
+import { useUser } from './contexts/UserContext';
+import type { Lesson } from './types'
 
 type Screen = 'home' | 'lesson' | 'summary'
 
 function App() {
     const [screen, setScreen] = useState<Screen>('home')
     const [activeLessonId, setActiveLessonId] = useState<string | null>(null)
-    const [progress, setProgress] = useState<UserProgress>(() => {
-        const saved = localStorage.getItem('youdrive_progress');
-        return saved ? JSON.parse(saved) : {
-            completedLessonIds: [],
-            currentLessonId: null,
-            totalScore: 0
-        };
-    });
+    const { progress, completeLesson } = useUser();
 
-    // Sync progress to localStorage
-    useEffect(() => {
-        localStorage.setItem('youdrive_progress', JSON.stringify(progress));
-    }, [progress]);
-
-    // Derive lesson statuses from progress (no setState in effect)
+    // Derive lesson statuses from progress
     const lessons = useMemo(() => {
         return initialLessons.map((lesson, index) => {
+            const lessonWithStatus: Lesson = { ...lesson };
+
             if (progress.completedLessonIds.includes(lesson.id)) {
-                return { ...lesson, status: 'completed' as const };
+                lessonWithStatus.status = 'completed';
+            } else if (index === 0 || progress.completedLessonIds.includes(initialLessons[index - 1].id)) {
+                lessonWithStatus.status = 'available';
+            } else {
+                lessonWithStatus.status = 'locked';
             }
-            if (index === 0 || progress.completedLessonIds.includes(initialLessons[index - 1].id)) {
-                return { ...lesson, status: 'available' as const };
+
+            const castSignsMap = signsMap as Record<string, string>;
+            if (castSignsMap && castSignsMap[lesson.id]) {
+                lessonWithStatus.image = castSignsMap[lesson.id];
             }
-            return { ...lesson, status: 'locked' as const };
+
+            return lessonWithStatus;
         });
     }, [progress.completedLessonIds]);
 
@@ -44,12 +44,7 @@ function App() {
 
     const handleLessonComplete = () => {
         if (activeLessonId) {
-            setProgress(prev => ({
-                ...prev,
-                completedLessonIds: prev.completedLessonIds.includes(activeLessonId)
-                    ? prev.completedLessonIds
-                    : [...prev.completedLessonIds, activeLessonId]
-            }));
+            completeLesson(activeLessonId);
         }
         setScreen('summary');
     }
@@ -61,6 +56,20 @@ function App() {
 
     const activeLesson = lessons.find(l => l.id === activeLessonId);
 
+    // Lessons and Path are wrapped in MainLayout
+    // LessonScreen (the drill) is a full-screen experience
+    if (screen === 'lesson' && activeLesson) {
+        return (
+            <div className="min-h-screen w-full relative overflow-x-hidden bg-slate-900">
+                <LessonScreen
+                    lesson={activeLesson}
+                    onComplete={handleLessonComplete}
+                    onExit={goHome}
+                />
+            </div>
+        );
+    }
+
     return (
         <div className="min-h-screen w-full relative overflow-x-hidden">
             <div className="liquid-bg">
@@ -69,15 +78,12 @@ function App() {
                 <div className="orb orb-3"></div>
             </div>
 
-            <div className="relative z-10 flex flex-col items-center min-h-screen">
+            <MainLayout>
                 {screen === 'home' && (
                     <div className="w-full flex flex-col items-center">
-                        <header className="w-full py-12 px-6 flex flex-col items-center">
-                            <div className="w-20 h-20 bg-blue-500/20 rounded-3xl mb-6 flex items-center justify-center transform rotate-12 shadow-2xl glass-card">
-                                <span className="text-4xl text-blue-400">🚗</span>
-                            </div>
-                            <h1 className="text-6xl font-black mb-2 tracking-tighter text-white drop-shadow-2xl">YouDrive</h1>
-                            <p className="text-slate-400 font-light italic text-lg">Ετοιμάσου για το δίπλωμα οδήγησης</p>
+                        <header className="w-full py-8 flex flex-col items-center">
+                            <h1 className="text-4xl font-black mb-1 tracking-tighter text-white drop-shadow-2xl">ΜΑΘΗΣΗ</h1>
+                            <div className="h-1 w-20 bg-blue-500 rounded-full mb-8"></div>
                         </header>
 
                         <div className="w-full max-w-2xl px-4">
@@ -87,14 +93,6 @@ function App() {
                             />
                         </div>
                     </div>
-                )}
-
-                {screen === 'lesson' && activeLesson && (
-                    <LessonScreen
-                        lesson={activeLesson}
-                        onComplete={handleLessonComplete}
-                        onExit={goHome}
-                    />
                 )}
 
                 {screen === 'summary' && (
@@ -107,15 +105,15 @@ function App() {
                             >
                                 🏆
                             </motion.div>
-                            <h2 className="text-5xl font-black mb-4 text-white">ΜΠΡΑΒΟ!</h2>
-                            <p className="text-2xl text-slate-400 mb-10 italic">Ολοκλήρωσες το μάθημα</p>
-                            <button onClick={goHome} className="btn-primary w-full text-xl py-5 shadow-2xl">
-                                ΣΥΝΕΧΕΙΑ ΣΤΗΝ ΠΟΡΕΙΑ
+                            <h2 className="text-5xl font-black mb-4 text-white uppercase italic">Μπραβο!</h2>
+                            <p className="text-xl text-slate-400 mb-10">Ολοκλήρωσες το μάθημα και κέρδισες 10 XP</p>
+                            <button onClick={goHome} className="btn-primary w-full text-xl py-5 shadow-2xl uppercase font-black">
+                                Συνεχεια
                             </button>
                         </div>
                     </div>
                 )}
-            </div>
+            </MainLayout>
         </div>
     )
 }

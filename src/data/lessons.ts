@@ -9,7 +9,8 @@ export const initialLessons: Lesson[] = [
             {
                 id: 'q1',
                 type: 'multiple-choice',
-                prompt: 'Τι σημαίνει αυτό το σήμα (STOP);',
+                prompt: 'Τι σημαίνει αυτό το σήμα;',
+                signId: 'stop',
                 options: [
                     'Υποχρεωτική διακοπή πορείας',
                     'Απαγορεύεται η είσοδος',
@@ -29,6 +30,19 @@ export const initialLessons: Lesson[] = [
                     'Όπου θέλουμε'
                 ],
                 correctAnswer: 'Δεξιά'
+            },
+            {
+                id: 'q3',
+                type: 'multiple-choice',
+                prompt: 'Τι σημαίνει αυτό το σήμα;',
+                signId: 'yield',
+                options: [
+                    'Υποχρεωτική διακοπή πορείας',
+                    'Παραχώρηση προτεραιότητας',
+                    'Απαγορεύεται η είσοδος',
+                    'Μονόδρομος'
+                ],
+                correctAnswer: 'Παραχώρηση προτεραιότητας'
             }
         ]
     }

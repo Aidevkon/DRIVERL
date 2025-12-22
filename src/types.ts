@@ -7,6 +7,7 @@ export interface Question {
     options?: string[];
     correctAnswer: string | string[];
     image?: string;
+    signId?: string;
 }
 
 export type LessonStatus = 'locked' | 'available' | 'completed';
@@ -17,6 +18,7 @@ export interface Lesson {
     description?: string;
     questions: Question[];
     status: LessonStatus;
+    image?: string;
 }
 
 export interface UserProgress {
