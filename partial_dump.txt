@@ -1,0 +1,25 @@
+PDF object type: object
+PDF object keys: [
+  'AbortException',
+  'FormatError',
+  'InvalidPDFException',
+  'Line',
+  'LineDirection',
+  'LineStore',
+  'PDFParse',
+  'PasswordException',
+  'Point',
+  'Rectangle',
+  'ResponseException',
+  'Shape',
+  'Table',
+  'UnknownErrorException',
+  'VerbosityLevel',
+  'getException'
+]
+Extraction Error: TypeError: Class constructors cannot be invoked without 'new'
+    at extract (file:///C:/Users/Aknti/Documents/YOUDRIVEL/extract_pdf.js:17:28)
+    at file:///C:/Users/Aknti/Documents/YOUDRIVEL/extract_pdf.js:27:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:377:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:671:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
