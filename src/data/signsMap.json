@@ -1,98 +1,182 @@
 [
   {
-    "id": "stop",
+    "id": "R-2",
     "category": "mandatory",
-    "description": "Υποχρεωτική διακοπή πορείας",
-    "image": "/src/assets/signs/stop.svg"
+    "description": "Υποχρεωτική διακοπή πορείας (STOP)",
+    "image": "/src/assets/signs/R-2.svg"
   },
   {
-    "id": "yield",
+    "id": "R-1",
     "category": "mandatory",
     "description": "Παραχώρηση προτεραιότητας",
-    "image": "/src/assets/signs/yield.svg"
+    "image": "/src/assets/signs/R-1.svg"
   },
   {
     "id": "no-entry",
     "category": "prohibitory",
     "description": "Απαγορεύεται η είσοδος",
-    "image": "/src/assets/signs/no-entry.svg"
+    "image": "/src/assets/signs/R-7.svg"
   },
   {
     "id": "speed-30",
     "category": "prohibitory",
     "description": "Ανώτατο όριο ταχύτητας 30",
-    "image": "/src/assets/signs/speed-30.svg"
+    "image": "/src/assets/signs/R-32-30.svg"
+  },
+  {
+    "id": "R-32-30",
+    "category": "prohibitory",
+    "description": "Ανώτατο όριο ταχύτητας 30",
+    "image": "/src/assets/signs/R-32-30.svg"
   },
   {
     "id": "speed-50",
     "category": "prohibitory",
     "description": "Ανώτατο όριο ταχύτητας 50",
-    "image": "/src/assets/signs/speed-50.svg"
+    "image": "/src/assets/signs/R-32-50.svg"
   },
   {
-    "id": "pedestrian",
+    "id": "R-32-50",
+    "category": "prohibitory",
+    "description": "Ανώτατο όριο ταχύτητας 50",
+    "image": "/src/assets/signs/R-32-50.svg"
+  },
+  {
+    "id": "K-16",
     "category": "warning",
-    "description": "Κίνδυνος διάβασης πεζών",
-    "image": "/src/assets/signs/pedestrian.svg"
+    "description": "Κίνδυνος λόγω διάβασης πεζών",
+    "image": "/src/assets/signs/K-16.svg"
   },
   {
-    "id": "danger",
+    "id": "K-26",
     "category": "warning",
     "description": "Κίνδυνος (Άλλοι κίνδυνοι)",
-    "image": "/src/assets/signs/danger.svg"
+    "image": "/src/assets/signs/K-26.svg"
   },
   {
-    "id": "slippery",
+    "id": "K-13",
     "category": "warning",
     "description": "Ολισθηρό οδόστρωμα",
-    "image": "/src/assets/signs/slippery.svg"
+    "image": "/src/assets/signs/K-13.svg"
   },
   {
     "id": "no-parking",
     "category": "prohibitory",
     "description": "Απαγορεύεται η στάθμευση",
-    "image": "/src/assets/signs/no-parking.svg"
+    "image": "/src/assets/signs/R-41.svg"
+  },
+  {
+    "id": "R-41",
+    "category": "prohibitory",
+    "description": "Απαγορεύεται η στάθμευση",
+    "image": "/src/assets/signs/R-41.svg"
   },
   {
     "id": "no-overtaking",
     "category": "prohibitory",
     "description": "Απαγορεύεται το προσπέρασμα",
-    "image": "/src/assets/signs/no-overtaking.svg"
+    "image": "/src/assets/signs/R-30.svg"
   },
   {
-    "id": "roundabout",
+    "id": "R-30",
+    "category": "prohibitory",
+    "description": "Απαγορεύεται το προσπέρασμα",
+    "image": "/src/assets/signs/R-30.svg"
+  },
+  {
+    "id": "R-52",
     "category": "mandatory",
     "description": "Υποχρεωτική κυκλική πορεία",
-    "image": "/src/assets/signs/roundabout.svg"
+    "image": "/src/assets/signs/R-52.svg"
   },
   {
     "id": "speed-80",
     "category": "prohibitory",
     "description": "Ανώτατο όριο ταχύτητας 80",
-    "image": "/src/assets/signs/speed-80.svg"
+    "image": "/src/assets/signs/R-32-80.svg"
+  },
+  {
+    "id": "R-32-80",
+    "category": "prohibitory",
+    "description": "Ανώτατο όριο ταχύτητας 80",
+    "image": "/src/assets/signs/R-32-80.svg"
   },
   {
     "id": "one-way",
     "category": "info",
     "description": "Μονόδρομος",
-    "image": "/src/assets/signs/one-way.svg"
+    "image": "/src/assets/signs/P-21.svg"
+  },
+  {
+    "id": "P-21",
+    "category": "info",
+    "description": "Μονόδρομος",
+    "image": "/src/assets/signs/P-21.svg"
   },
   {
     "id": "highway",
     "category": "info",
     "description": "Αυτοκινητόδρομος",
-    "image": "/src/assets/signs/highway.svg"
+    "image": "/src/assets/signs/P-27.svg"
+  },
+  {
+    "id": "P-27",
+    "category": "info",
+    "description": "Αυτοκινητόδρομος",
+    "image": "/src/assets/signs/P-27.svg"
   },
   {
     "id": "city-start",
     "category": "info",
     "description": "Είσοδος σε κατοικημένη περιοχή",
-    "image": "/src/assets/signs/city-start.svg"
+    "image": "/src/assets/signs/P-58.svg"
+  },
+  {
+    "id": "P-58",
+    "category": "info",
+    "description": "Είσοδος σε κατοικημένη περιοχή",
+    "image": "/src/assets/signs/P-58.svg"
   },
   {
     "id": "eco",
     "category": "info",
     "description": "Οικονομική Οδήγηση",
     "image": "/src/assets/signs/eco.svg"
+  },
+  {
+    "id": "stop",
+    "category": "mandatory",
+    "description": "Υποχρεωτική διακοπή πορείας (STOP)",
+    "image": "/src/assets/signs/R-2.svg"
+  },
+  {
+    "id": "yield",
+    "category": "mandatory",
+    "description": "Παραχώρηση προτεραιότητας",
+    "image": "/src/assets/signs/R-1.svg"
+  },
+  {
+    "id": "pedestrian",
+    "category": "warning",
+    "description": "Κίνδυνος λόγω διάβασης πεζών",
+    "image": "/src/assets/signs/K-16.svg"
+  },
+  {
+    "id": "danger",
+    "category": "warning",
+    "description": "Κίνδυνος (Άλλοι κίνδυνοι)",
+    "image": "/src/assets/signs/K-26.svg"
+  },
+  {
+    "id": "slippery",
+    "category": "warning",
+    "description": "Ολισθηρό οδόστρωμα",
+    "image": "/src/assets/signs/K-13.svg"
+  },
+  {
+    "id": "roundabout",
+    "category": "mandatory",
+    "description": "Υποχρεωτική κυκλική πορεία",
+    "image": "/src/assets/signs/R-52.svg"
   }
 ]

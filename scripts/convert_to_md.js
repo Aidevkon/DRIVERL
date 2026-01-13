@@ -7,8 +7,8 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const INPUT_FILE = path.join(__dirname, '..', 'src', 'data', 'yme_manuals.html');
-const OUTPUT_FILE = path.join(__dirname, '..', 'src', 'data', 'kok_knowledge_base.md');
+const INPUT_FILE = path.join(__dirname, '..', 'data', 'yme_manuals.html');
+const OUTPUT_FILE = path.join(__dirname, '..', 'data', 'kok_knowledge_base.md');
 
 function convertToMd() {
     if (!fs.existsSync(INPUT_FILE)) {

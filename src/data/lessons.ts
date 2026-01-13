@@ -18,7 +18,7 @@ export const initialLessons: Lesson[] = [
         id: 'signs-1',
         title: 'Βασικά Σήματα',
         status: 'available',
-        image: '/src/assets/signs/R-2.svg',
+        image: '/src/assets/signs/R-1.svg',
         questions: [
             {
                 id: 'basic-q1',
@@ -50,7 +50,7 @@ export const initialLessons: Lesson[] = [
                 id: 'basic-q3',
                 type: 'multiple-choice',
                 prompt: 'Ποιο είναι το όριο ταχύτητας σε αυτό το σήμα (εάν αναγράφει 30);',
-                signId: 'R-32',
+                signId: 'R-32-30',
                 options: [
                     '20 χλμ/ώρα',
                     '30 χλμ/ώρα',
@@ -65,13 +65,13 @@ export const initialLessons: Lesson[] = [
         id: 'prohibitions-1',
         title: 'Απαγορεύσεις',
         status: 'locked',
-        image: '/src/assets/signs/R-4.svg',
+        image: '/src/assets/signs/R-7.svg',
         questions: [
             {
                 id: 'prohib-q1',
                 type: 'multiple-choice',
                 prompt: 'Τι απαγορεύει αυτό το σήμα;',
-                signId: 'R-4',
+                signId: 'R-7',
                 options: [
                     'Τη στάθμευση',
                     'Την είσοδο σε όλα τα οχήματα',
@@ -97,7 +97,7 @@ export const initialLessons: Lesson[] = [
                 id: 'prohib-q3',
                 type: 'multiple-choice',
                 prompt: 'Τι απαγορεύεται όταν βλέπετε δύο αυτοκίνητα δίπλα-δίπλα σε κόκκινο κύκλο;',
-                signId: 'R-27',
+                signId: 'R-30',
                 options: [
                     'Η οδήγηση με δύο αυτοκίνητα',
                     'Το προσπέρασμα',
@@ -110,7 +110,7 @@ export const initialLessons: Lesson[] = [
                 id: 'prohib-q4',
                 type: 'multiple-choice',
                 prompt: 'Ποιο είναι το ανώτατο όριο ταχύτητας εδώ;',
-                signId: 'R-32',
+                signId: 'R-32-50',
                 options: [
                     '30 χλμ/ώρα',
                     '50 χλμ/ώρα',
@@ -191,7 +191,7 @@ export const initialLessons: Lesson[] = [
                 id: 'mand-q2',
                 type: 'multiple-choice',
                 prompt: 'Ποιο είναι το όριο ταχύτητας σε αυτή την περιοχή;',
-                signId: 'R-32',
+                signId: 'R-32-80',
                 options: [
                     '50 χλμ/ώρα',
                     '80 χλμ/ώρα',

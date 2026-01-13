@@ -11,7 +11,7 @@ const __dirname = path.dirname(__filename);
 const BASE_URL = "https://www.glavopoulos.com";
 const INDEX_URL = "https://www.glavopoulos.com/el/kok-index/";
 // Adjust output path relative to scripts folder
-const OUTPUT_FILE = path.join(__dirname, '..', 'src', 'data', 'yme_manuals.html');
+const OUTPUT_FILE = path.join(__dirname, '..', 'data', 'yme_manuals.html');
 
 async function fetchUrl(url) {
     try {
