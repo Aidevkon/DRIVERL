@@ -10,15 +10,15 @@ interface BottomNavItemProps {
 const BottomNavItem: React.FC<BottomNavItemProps> = ({ icon: Icon, isActive, label }) => (
     <button
         aria-label={label}
-        className={`p-2 rounded-xl transition-colors ${isActive ? 'text-blue-400' : 'text-slate-400'}`}
+        className={`p-3 rounded-2xl transition-all ${isActive ? 'text-[#1CB0F6] bg-[#E1F2FF]' : 'text-[#7C7BA0]'}`}
     >
-        <Icon size={24} strokeWidth={isActive ? 2.5 : 2} />
+        <Icon size={26} strokeWidth={3} />
     </button>
 );
 
 export const BottomNav: React.FC = () => {
     return (
-        <nav className="lg:hidden fixed bottom-0 left-0 right-0 h-16 bg-slate-900/90 backdrop-blur-xl border-t border-white/10 flex items-center justify-around px-4 z-50">
+        <nav className="lg:hidden fixed bottom-0 left-0 right-0 h-20 bg-white border-t-2 border-[#E5E5E5] flex items-center justify-around px-6 z-50 pb-4">
             <BottomNavItem icon={Home} isActive label="Μάθηση" />
             <BottomNavItem icon={Trophy} label="Κατάταξη" />
             <BottomNavItem icon={Target} label="Αποστολές" />

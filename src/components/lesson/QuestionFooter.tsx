@@ -17,28 +17,28 @@ export const QuestionFooter: React.FC<QuestionFooterProps> = ({
     disabled
 }) => {
     return (
-        <footer className={`fixed bottom-0 left-0 right-0 p-6 lg:p-10 transition-colors duration-300 border-t ${status === 'correct' ? 'bg-green-500/20 border-green-500/30' :
-                status === 'wrong' ? 'bg-red-500/20 border-red-500/30' :
-                    'bg-slate-900 border-white/10'
+        <footer className={`fixed bottom-0 left-0 right-0 p-6 lg:p-10 transition-colors duration-300 border-t-2 ${status === 'correct' ? 'bg-[#D7FFB8] border-[#58CC02]/30' :
+            status === 'wrong' ? 'bg-[#FFDFE0] border-[#FF4B4B]/30' :
+                'bg-white border-[#E5E5E5]'
             }`}>
             <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
                 <div className="flex items-center gap-4 flex-grow">
                     {status === 'correct' && (
                         <>
-                            <div className="bg-green-500 p-2 rounded-full text-white">
-                                <CheckCircle2 size={32} />
+                            <div className="bg-[#58CC02] p-3 rounded-2xl text-white shadow-[0_4px_0_0_#46A302]">
+                                <CheckCircle2 size={32} strokeWidth={3} />
                             </div>
-                            <div className="text-2xl font-black text-green-500 uppercase tracking-tight">Σωστα!</div>
+                            <div className="text-2xl font-black text-[#58CC02] uppercase tracking-tight">Σωστά! 🎉</div>
                         </>
                     )}
                     {status === 'wrong' && (
                         <>
-                            <div className="bg-red-500 p-2 rounded-full text-white">
-                                <XCircle size={32} />
+                            <div className="bg-[#FF4B4B] p-3 rounded-2xl text-white shadow-[0_4px_0_0_#D33131]">
+                                <XCircle size={32} strokeWidth={3} />
                             </div>
                             <div>
-                                <div className="text-2xl font-black text-red-500 uppercase tracking-tight">Λαθος...</div>
-                                <div className="text-red-400 font-bold">Η σωστή απάντηση: {correctAnswer}</div>
+                                <div className="text-2xl font-black text-[#FF4B4B] uppercase tracking-tight">Λάθος... 😕</div>
+                                <div className="text-[#FF4B4B] font-bold">Η σωστή απάντηση: {correctAnswer}</div>
                             </div>
                         </>
                     )}
@@ -49,9 +49,9 @@ export const QuestionFooter: React.FC<QuestionFooterProps> = ({
                         <button
                             disabled={disabled}
                             onClick={onCheck}
-                            className={`w-full md:w-48 py-4 text-xl font-black rounded-2xl transition-all ${disabled
-                                    ? 'bg-slate-700 text-slate-500 cursor-not-allowed'
-                                    : 'bg-green-600 text-white hover:bg-green-500 active:translate-y-1 shadow-[0_4px_0_0_rgba(22,101,52,1)]'
+                            className={`w-full md:w-48 py-4 btn-flat ${disabled
+                                ? 'bg-[#E5E5E5] text-[#AFAFAF] border-b-[#C0C0C0] cursor-not-allowed'
+                                : 'btn-flat-success text-white'
                                 }`}
                         >
                             ΕΛΕΓΧΟΣ
@@ -59,7 +59,7 @@ export const QuestionFooter: React.FC<QuestionFooterProps> = ({
                     ) : (
                         <button
                             onClick={onNext}
-                            className={`w-full md:w-48 py-4 text-xl font-black rounded-2xl transition-all text-white shadow-[0_4px_0_0_rgba(0,0,0,0.2)] ${status === 'correct' ? 'bg-green-600 hover:bg-green-500' : 'bg-red-600 hover:bg-red-500'
+                            className={`w-full md:w-48 py-4 btn-flat text-white ${status === 'correct' ? 'btn-flat-success' : 'btn-flat-error'
                                 }`}
                         >
                             ΣΥΝΕΧΕΙΑ

@@ -26,3 +26,15 @@ export interface UserProgress {
     currentLessonId: string | null;
     totalScore: number;
 }
+
+export interface UserContextType {
+    progress: UserProgress;
+    hearts: number;
+    xp: number;
+    gems: number;
+    streak: number;
+    addXp: (amount: number) => void;
+    addGems: (amount: number) => void;
+    loseHeart: () => void;
+    completeLesson: (lessonId: string) => void;
+}

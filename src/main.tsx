@@ -1,13 +1,53 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
+import { StrictMode, Component } from 'react'
+import type { ErrorInfo, ReactNode } from 'react'
+import { createRoot } from 'react-dom/client'
 import './index.css'
-import { UserProvider } from './contexts/UserContext'
+import App from './App.tsx'
+import { UserProvider } from './contexts/UserProvider.tsx'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
-        <UserProvider>
-            <App />
-        </UserProvider>
-    </React.StrictMode>,
-)
+class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean; error: Error | null }> {
+    constructor(props: { children: ReactNode }) {
+        super(props);
+        this.state = { hasError: false, error: null };
+    }
+
+    static getDerivedStateFromError(error: Error) {
+        return { hasError: true, error };
+    }
+
+    componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+        console.error("Uncaught error:", error, errorInfo);
+    }
+
+    render() {
+        if (this.state.hasError) {
+            return (
+                <div className="error-boundary">
+                    <h1>Something went wrong.</h1>
+                    <pre>{this.state.error?.toString()}</pre>
+                    <pre>{this.state.error?.stack}</pre>
+                </div>
+            );
+        }
+
+        return this.props.children;
+    }
+}
+
+console.log('Main.tsx is running');
+try {
+    const root = createRoot(document.getElementById('root')!);
+    root.render(
+        <StrictMode>
+            <ErrorBoundary>
+                <UserProvider>
+                    <App />
+                </UserProvider>
+            </ErrorBoundary>
+        </StrictMode>,
+    );
+    console.log('App mounted successfully');
+} catch (e) {
+    console.error('Failed to mount App:', e);
+    document.body.innerHTML = `<div style="color:red">Failed to mount: ${e}</div>`;
+}

@@ -7,13 +7,16 @@ interface ProgressBarProps {
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({ progress }) => {
     return (
-        <div className="w-full h-4 bg-white/10 rounded-full overflow-hidden backdrop-blur-sm border border-white/5">
+        <div className="progress-bar-container">
             <motion.div
-                className="h-full bg-gradient-to-r from-blue-400 to-purple-500"
                 initial={{ width: 0 }}
                 animate={{ width: `${progress * 100}%` }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-            />
+                className="progress-bar-fill relative"
+            >
+                {/* 3D Glossy highlight */}
+                <div className="absolute top-1 left-2 right-2 h-1 bg-white/30 rounded-full" />
+            </motion.div>
         </div>
-    )
-}
+    );
+};

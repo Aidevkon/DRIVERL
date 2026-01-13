@@ -4,11 +4,12 @@ import { LessonScreen } from './components/LessonScreen'
 import { LessonPath } from './components/LessonPath'
 import { MainLayout } from './components/layout/MainLayout'
 import { initialLessons } from './data/lessons'
-import signsMap from './data/signsMap.json';
-import { useUser } from './contexts/UserContext';
+import { useUser } from './hooks/useUser';
 import type { Lesson } from './types'
 
-type Screen = 'home' | 'lesson' | 'summary'
+import { StudyScreen } from './components/StudyScreen'
+
+type Screen = 'home' | 'lesson' | 'study' | 'summary'
 
 function App() {
     const [screen, setScreen] = useState<Screen>('home')
@@ -28,18 +29,13 @@ function App() {
                 lessonWithStatus.status = 'locked';
             }
 
-            const castSignsMap = signsMap as Record<string, string>;
-            if (castSignsMap && castSignsMap[lesson.id]) {
-                lessonWithStatus.image = castSignsMap[lesson.id];
-            }
-
             return lessonWithStatus;
         });
     }, [progress.completedLessonIds]);
 
-    const startLesson = (lessonId: string) => {
+    const startStudy = (lessonId: string) => {
         setActiveLessonId(lessonId);
-        setScreen('lesson');
+        setScreen('study');
     }
 
     const handleLessonComplete = () => {
@@ -70,6 +66,18 @@ function App() {
         );
     }
 
+    if (screen === 'study' && activeLesson) {
+        return (
+            <div className="min-h-screen w-full relative overflow-x-hidden bg-slate-900">
+                <StudyScreen
+                    lesson={activeLesson}
+                    onStartQuiz={() => setScreen('lesson')}
+                    onBack={goHome}
+                />
+            </div>
+        );
+    }
+
     return (
         <div className="min-h-screen w-full relative overflow-x-hidden">
             <div className="liquid-bg">
@@ -89,7 +97,7 @@ function App() {
                         <div className="w-full max-w-2xl px-4">
                             <LessonPath
                                 lessons={lessons}
-                                onLessonSelect={startLesson}
+                                onLessonSelect={startStudy}
                             />
                         </div>
                     </div>

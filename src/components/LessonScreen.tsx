@@ -5,7 +5,7 @@ import { AnswerButton } from './AnswerButton'
 import { QuestionHeader } from './lesson/QuestionHeader'
 import { QuestionFooter } from './lesson/QuestionFooter'
 import { SignRenderer } from './SignRenderer'
-import { useUser } from '../contexts/UserContext'
+import { useUser } from '../hooks/useUser';
 
 interface LessonScreenProps {
     lesson: Lesson;
@@ -53,16 +53,16 @@ export const LessonScreen: React.FC<LessonScreenProps> = ({ lesson, onComplete, 
     // Handle out of hearts
     if (hearts <= 0) {
         return (
-            <div className="min-h-screen w-full flex flex-col items-center justify-center p-6 bg-slate-900">
-                <div className="glass-card p-10 w-full max-w-md text-center">
+            <div className="min-h-screen w-full flex flex-col items-center justify-center p-6 bg-[#F7F7F7]">
+                <div className="flat-card p-10 w-full max-w-md text-center">
                     <div className="text-8xl mb-6">💔</div>
-                    <h2 className="text-4xl font-black text-white mb-4 uppercase">Εχασες ολες τις καρδιες!</h2>
-                    <p className="text-slate-400 mb-8">Μην απογοητεύεσαι! Επιστρέψου αύριο ή κάνε εξάσκηση για να γεμίσεις τις καρδιές σου.</p>
+                    <h2 className="text-4xl font-black text-[#4B4B4B] mb-4 uppercase">Έχασες όλες τις καρδιές!</h2>
+                    <p className="text-[#777777] mb-8 font-bold leading-relaxed">Μην απογοητεύεσαι! Επιστρέψου αύριο ή κάνε εξάσκηση για να γεμίσεις τις καρδιές σου.</p>
                     <button
                         onClick={onExit}
-                        className="btn-primary w-full text-xl py-4 font-black uppercase"
+                        className="btn-flat btn-flat-primary w-full text-xl py-4"
                     >
-                        Επιστροφη
+                        ΕΠΙΣΤΡΟΦΗ
                     </button>
                 </div>
             </div>
@@ -70,7 +70,7 @@ export const LessonScreen: React.FC<LessonScreenProps> = ({ lesson, onComplete, 
     }
 
     return (
-        <div className="min-h-screen w-full flex flex-col bg-slate-900 pb-40">
+        <div className="min-h-screen w-full flex flex-col bg-[#FDFCF0] pb-40">
             <QuestionHeader
                 progress={progress}
                 onExit={onExit}
@@ -80,14 +80,27 @@ export const LessonScreen: React.FC<LessonScreenProps> = ({ lesson, onComplete, 
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={currentQuestionIndex}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
+                        initial="hidden"
+                        animate="visible"
                         exit={{ opacity: 0, x: -20 }}
-                        className="w-full"
+                        variants={{
+                            visible: {
+                                transition: {
+                                    staggerChildren: 0.15,
+                                }
+                            }
+                        }}
+                        className="w-full flex flex-col items-center"
                     >
                         {(currentQuestion.signId || lesson.image) && (
-                            <div className="flex justify-center mb-10 h-48 md:h-64">
-                                <div className="rounded-3xl shadow-2xl glass-card p-6 border border-white/20 flex items-center justify-center bg-white/5 backdrop-blur-xl">
+                            <motion.div
+                                variants={{
+                                    hidden: { opacity: 0, scale: 0.9 },
+                                    visible: { opacity: 1, scale: 1 }
+                                }}
+                                className="flex justify-center mb-12 h-48 md:h-64"
+                            >
+                                <div className="rounded-[40px] shadow-[0_12px_0_0_rgba(76,75,130,0.05)] border-2 border-[#E5E5E5] flex items-center justify-center bg-white p-10 hover:transform hover:scale-105 transition-all">
                                     {currentQuestion.signId ? (
                                         <SignRenderer signId={currentQuestion.signId} className="w-40 h-40 md:w-56 md:h-56" />
                                     ) : (
@@ -98,14 +111,20 @@ export const LessonScreen: React.FC<LessonScreenProps> = ({ lesson, onComplete, 
                                         />
                                     )}
                                 </div>
-                            </div>
+                            </motion.div>
                         )}
 
-                        <h2 className="text-2xl md:text-3xl font-black mb-10 leading-tight text-white px-2">
+                        <motion.h2
+                            variants={{
+                                hidden: { opacity: 0, y: 20 },
+                                visible: { opacity: 1, y: 0 }
+                            }}
+                            className="text-2xl md:text-3xl font-black mb-12 leading-tight text-[#4C4B82] px-2 text-center max-w-lg"
+                        >
                             {currentQuestion.prompt}
-                        </h2>
+                        </motion.h2>
 
-                        <div className="space-y-4 px-2">
+                        <div className="space-y-4 px-2 w-full">
                             {currentQuestion.options?.map((option) => (
                                 <AnswerButton
                                     key={option}

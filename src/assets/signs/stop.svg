@@ -1,0 +1,4 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <path d="M30,5 L70,5 L95,30 L95,70 L70,95 L30,95 L5,70 L5,30 Z" fill="#E11D48" stroke="white" stroke-width="4" />
+  <text x="50" y="62" font-size="22" font-weight="900" text-anchor="middle" fill="white" font-family="sans-serif">STOP</text>
+</svg>

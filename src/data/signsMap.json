@@ -1,3 +1,98 @@
-{
-  "signs-1": "/src/assets/signs/sign_7.png"
-}
+[
+  {
+    "id": "stop",
+    "category": "mandatory",
+    "description": "Υποχρεωτική διακοπή πορείας",
+    "image": "/src/assets/signs/stop.svg"
+  },
+  {
+    "id": "yield",
+    "category": "mandatory",
+    "description": "Παραχώρηση προτεραιότητας",
+    "image": "/src/assets/signs/yield.svg"
+  },
+  {
+    "id": "no-entry",
+    "category": "prohibitory",
+    "description": "Απαγορεύεται η είσοδος",
+    "image": "/src/assets/signs/no-entry.svg"
+  },
+  {
+    "id": "speed-30",
+    "category": "prohibitory",
+    "description": "Ανώτατο όριο ταχύτητας 30",
+    "image": "/src/assets/signs/speed-30.svg"
+  },
+  {
+    "id": "speed-50",
+    "category": "prohibitory",
+    "description": "Ανώτατο όριο ταχύτητας 50",
+    "image": "/src/assets/signs/speed-50.svg"
+  },
+  {
+    "id": "pedestrian",
+    "category": "warning",
+    "description": "Κίνδυνος διάβασης πεζών",
+    "image": "/src/assets/signs/pedestrian.svg"
+  },
+  {
+    "id": "danger",
+    "category": "warning",
+    "description": "Κίνδυνος (Άλλοι κίνδυνοι)",
+    "image": "/src/assets/signs/danger.svg"
+  },
+  {
+    "id": "slippery",
+    "category": "warning",
+    "description": "Ολισθηρό οδόστρωμα",
+    "image": "/src/assets/signs/slippery.svg"
+  },
+  {
+    "id": "no-parking",
+    "category": "prohibitory",
+    "description": "Απαγορεύεται η στάθμευση",
+    "image": "/src/assets/signs/no-parking.svg"
+  },
+  {
+    "id": "no-overtaking",
+    "category": "prohibitory",
+    "description": "Απαγορεύεται το προσπέρασμα",
+    "image": "/src/assets/signs/no-overtaking.svg"
+  },
+  {
+    "id": "roundabout",
+    "category": "mandatory",
+    "description": "Υποχρεωτική κυκλική πορεία",
+    "image": "/src/assets/signs/roundabout.svg"
+  },
+  {
+    "id": "speed-80",
+    "category": "prohibitory",
+    "description": "Ανώτατο όριο ταχύτητας 80",
+    "image": "/src/assets/signs/speed-80.svg"
+  },
+  {
+    "id": "one-way",
+    "category": "info",
+    "description": "Μονόδρομος",
+    "image": "/src/assets/signs/one-way.svg"
+  },
+  {
+    "id": "highway",
+    "category": "info",
+    "description": "Αυτοκινητόδρομος",
+    "image": "/src/assets/signs/highway.svg"
+  },
+  {
+    "id": "city-start",
+    "category": "info",
+    "description": "Είσοδος σε κατοικημένη περιοχή",
+    "image": "/src/assets/signs/city-start.svg"
+  },
+  {
+    "id": "eco",
+    "category": "info",
+    "description": "Οικονομική Οδήγηση",
+    "image": "/src/assets/signs/eco.svg"
+  }
+]
